@@ -109,7 +109,7 @@ Agent开发基于**Langchian1.0版本+LangGraph**，引入**Milvus2.6版本**新
 - **模型量化**：
     - all-mpnet-base-v2：NER提取模型经 ONNXRUNTIME 动态量化，模型size**缩小4倍**，推理速度提升 30%，精度损失<1%。
     - Qwen3-4b:Q4_0(Ollama量化版本): 查询改写模型量化后size缩小约两倍，推理速度提升30%。
-- **消息队列**：Redis Stream 解耦，知识库数据和知识图谱数据多消费者并行写入 Milvus 和 Neo4j，大幅提升吞吐。
+- **消息队列**：Redis Stream + 消费者实现，知识库数据和知识图谱数据多消费者并行写入 Milvus 和 Neo4j，大幅提升吞吐。
 
   ## 🛠️ 技术栈与选型理由
 
