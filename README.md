@@ -107,7 +107,7 @@ Agent开发基于**Langchian1.0版本+LangGraph**，引入**Milvus2.6版本**新
 - **实体提取**：本地模型 all-mpnet-base-v2 提取4种基础实体，LLM 抽取 11 种适配数据集的领域实体类型，作为元数据赋予知识库。
 - **实体关系抽取**： LLM抽取实体关系，生成知识图谱三元组，存入图数据库Neo4j，后续支撑实体关系验证工具集。
 - **模型量化**：
-    - all-mpnet-base-v2：NER提取模型经 ONNXRUNTIME 动态量化，模型size**缩小4倍**，推理速度提升 30%，精度损失<1%。
+    - all-mpnet-base-v2：NER提取模型经 ONNXRUNTIME int8量化，模型size**缩小4倍**，推理速度提升 30%，精度损失<1%。
     - Qwen3-4b:Q4_0(Ollama量化版本): 查询改写模型量化后size缩小约两倍，推理速度提升30%。
 - **消息队列**：Redis Stream + 消费者队列实现，知识库数据和知识图谱数据多消费者并行写入 Milvus 和 Neo4j，大幅提升吞吐。
 
@@ -127,7 +127,8 @@ Agent开发基于**Langchian1.0版本+LangGraph**，引入**Milvus2.6版本**新
 | **图数据库** | Neo4j | 知识图谱实体关系存储，支持多跳验证 |
 | **缓存+短期记忆数据库** | Redis | 短期记忆（Hash+SortedSet）、高频缓存（Bloom Filter） |
 | **消息队列** | Redis Stream | 适配当前数据量，实现数据异步入库，无需额外引入Kafka |
-| **监控** | LangSmith + 本地logger | 自动提取所有由LanGraph开发的日志，无需自定义添加logger + 本地logger日志兜底 |
+| **模型量化** | ONNXRUNTIME | 相比Optimum方法更底层、可定制化量化范围更广 |
+| **监控** | LangSmith + 本地logger | 自动提取所有由LangGraph开发的日志，无需自定义添加logger + 本地logger日志兜底 |
 
 ## 📁 项目代码结构
 
