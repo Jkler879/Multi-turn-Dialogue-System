@@ -4,7 +4,7 @@
 整个 RAG + ReAct Agent 多轮对话系统系统的核心入口，
 负责初始化所有依赖服务、加载配置、实例化各功能模块，并对外提供统一的异步请求处理函数 handle_request_async，
 同时为命令行测试提供同步包装器 handle_request
-如需 api 测试请直接运行 api.py (根目录)
+如需 api 测试请直接运行 api.py
 
 主要功能：
     1. 环境初始化：加载 .env 配置文件，初始化 LangSmith 监控。
