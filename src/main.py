@@ -40,7 +40,7 @@ from langchain_core.messages import SystemMessage, HumanMessage
 import logging
 
 logging.basicConfig(
-    level=logging.INFO,  # 设置日志级别为 INFO，这样所有 INFO 及以上日志都会显示
+    level=logging.INFO,  # INFO级日志展示
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 
