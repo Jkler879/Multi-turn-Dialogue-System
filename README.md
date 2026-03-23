@@ -161,7 +161,7 @@ graph TD
 
 | FastAPI 单轮对话请求与响应示例 | FastAPI 多轮对话成功指代消解示例 |  |
 |-------------|---------|-------------|
-| ![API Docs_First_Dialouge](screen/Round1_dialogue.jpg) | ![API Docs_Seconde_Dialouge](screen/Round2_dialogue.jpg.jpg) |
+| ![API Docs_First_Dialouge](screen/Round1_dialogue.jpg) | ![API Docs_Seconde_Dialouge](screen/Round2_dialogue.jpg) |
   
 | 完整请求日志1 | 完整请求日志2  | 完整请求日志3  | 完整请求日志4  | 
 |---------------|---------------|---------------|---------------|
