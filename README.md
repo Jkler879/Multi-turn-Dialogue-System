@@ -156,7 +156,17 @@ graph TD
 | **模型量化** | ONNXRUNTIME | 相比Optimum方法更底层、可定制化量化范围更广 |
 | **日志监控** | LangSmith + 本地logger | 自动提取所有由LangGraph开发的日志减少开发量，本地logger日志兜底 |
 
-**系统截图**
+
+## 📸 演示截图
+
+| FastAPI 单轮对话请求与响应示例 | FastAPI 多轮对话成功指代消解示例 |  |
+|-------------|---------|-------------|
+| ![API Docs_First_Dialouge](screen/Round1_dialogue.jpg) | ![API Docs_Seconde_Dialouge](screen/Round2_dialogue.jpg.jpg) |
+  
+| 完整请求日志1 | 完整请求日志2  | 完整请求日志3  | 完整请求日志4  | 
+|---------------|---------------|---------------|---------------|
+| ![API_logger_01](screen/fastapi_total_logger01.jpg) | ![API_logger_02](screen/fastapi_total_logger02.jpg) | ![API_logger_03](screen/fastapi_total_logger03.jpg) | ![API_logger_04](screen/fastapi_total_logger04.jpg) |
+
 
 ## 🚀 后续优化方向
   - **推理引擎升级**：
