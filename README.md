@@ -51,12 +51,14 @@ graph TD
         VectorSearch --> RRF[RRF融合]
         FullTextSearch --> RRF
         RRF --> Rerank[BGE重排]
-        Rerank --> RetResult[返回带重排分数的候选文档]
+        Rerank --> RetResult[返回Top5候选文档、重排分数]
         
         Verifier --> Neo4j[(Neo4j知识图谱)]
-        Neo4j --> VeriResult[返回实体关系、证据、置信度]
+        Neo4j --> VeriResult[返回验证结果、证据、置信度]
 
         Translator --> Helsinki[Helsinki-NLP模型]
+        Helsinki --> TranslatorResult[返回中文翻译]
+
     end
 
     FinalAns -->|返回用户| User
@@ -72,11 +74,11 @@ graph TD
 
     subgraph 数据预处理与异步入库 - 离线模块
         RawData[原始数据] --> Chunking[文档分块]
-        Chunking --> EntityExt[实体提取 all-mpnet-base-v2+LLM]
+        Chunking --> EntityExt[实体提取 en_core_web_tef + LLM]
         EntityExt --> KBData[知识库数据含多层元数据]
         KBData --> Stream[Redis Stream消息队列]
 
-        EntityExt --> RelationExt[实体关系抽取 LLM]
+        EntityExt --> RelationExt[实体关系抽取]
         RelationExt --> KGData[知识图谱三元组]
         KGData --> Stream
 
