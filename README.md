@@ -20,9 +20,9 @@ graph TD
     style User fill:yellow,stroke:#333,stroke-width:2px
     style API fill:#E6E6FA,stroke:#333,stroke-width:2px
 
-    subgraph 请求处理流程
-        API --> QW["查询改写(指代消解)"]
-        QW --> Cache["高频查询缓存(布隆过滤器)"]
+    subgraph 多轮对话系统 - 在线
+        API --> QW["查询改写"]
+        QW --> Cache["高频查询缓存"]
         Cache -->|命中| DirectReturn[直接返回缓存答案]
         DirectReturn --> User
         Cache -->|未命中| ShortMem["短期记忆(Redis)"]
@@ -74,11 +74,11 @@ graph TD
 
     subgraph 数据预处理与异步入库 - 离线模块
         RawData[原始数据] --> Chunking[文档分块]
-        Chunking --> EntityExt[实体提取 en_core_web_tef + LLM]
-        EntityExt --> KBData[知识库数据含多层元数据]
+        Chunking --> EntityExt[NER实体抽取]
+        EntityExt --> KBData[知识库数据]
         KBData --> Stream[Redis Stream消息队列]
 
-        EntityExt --> RelationExt[实体关系抽取]
+        EntityExt --> RelationExt[RE实体关系抽取]
         RelationExt --> KGData[知识图谱三元组]
         KGData --> Stream
 
