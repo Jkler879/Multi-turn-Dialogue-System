@@ -21,7 +21,8 @@ graph TD
     style API fill:#E6E6FA,stroke:#333,stroke-width:2px
 
     subgraph 多轮对话系统 - 在线
-        API --> QW["查询改写"]
+        API --> AH["限流"]
+        AH --> QW["查询改写"]
         QW --> Cache["高频查询缓存"]
         Cache -->|命中| DirectReturn[直接返回缓存答案]
         DirectReturn --> User
